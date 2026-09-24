@@ -1,6 +1,6 @@
 # API de Alertas e Calendário de Retorno
 
-API secundária do MVP de Controle de Pacientes. Ela calcula a urgência da próxima consulta com base na data de `ultima_visita` e na situação do paciente, mantendo regras de intervalo e alertas ativos em SQLite.
+API secundária do MVP de Controle de Pacientes. Ela implementa a regra de negócio autônoma de acompanhamento clínico: calcula a urgência da próxima consulta com base na data de `ultima_visita` e na situação do paciente, mantendo regras de intervalo e alertas ativos em SQLite.
 
 ## Responsabilidade
 
@@ -69,7 +69,7 @@ A regra inicial de `Em Tratamento` usa intervalo de 15 dias. O resultado informa
 
 Retorna métricas dos alertas ativos e a lista detalhada, incluindo totais atrasados, em dia e com vencimento hoje.
 
-### PUT `/alertas/regras/{id}`
+### PUT `/alertas/regras/{regra_id}`
 
 Atualiza o intervalo de uma regra existente.
 
@@ -82,7 +82,7 @@ Atualiza o intervalo de uma regra existente.
 
 Regras criadas inicialmente: `Ativo`, `Em Tratamento`, `Alta` e `Acompanhamento`.
 
-### DELETE `/alertas/{id}`
+### DELETE `/alertas/{alerta_id}`
 
 Cancela um alerta ativo pelo identificador retornado em `POST /alertas/calcular-retorno`.
 
